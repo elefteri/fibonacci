@@ -56,10 +56,10 @@ app.post('/values', async (req, res) => {
         return res.status(422).send('Index too high');
     }
 
-    redisClient.hset('', index, 'Nothing yet');
+    redisClient.hset('fib_values', index, 'Nothing yet');
     redisPublisher.publish('insert', index);
     // pgClient.query('INSERT INTO FIB_SEQUENCE(FIB_INDEX) VALUES($1)', [index]);
-    pgClient.query(`INSERT INTO FIB_SEQUENCE(FIB_INDEX) VALUES(${index})`);
+    pgClient.query(`INSERT INTO FIB_SEQUENCE (FIB_INDEX) VALUES (${index})`);
 
     res.send({ working: true });
 });
