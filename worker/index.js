@@ -18,7 +18,6 @@ const sub = redisClient.duplicate();
 
 sub.on('message', (channel, message) => {
     redisClient.hset('values', message, fib(parseInt(message)));
-
 });
 
 sub.subscribe('insert');
