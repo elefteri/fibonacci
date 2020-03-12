@@ -1,5 +1,4 @@
 const keys = require('./keys');
-const redis = require('redis');
 
 // Express app setup
 const express = require('express');
@@ -25,3 +24,12 @@ pgClient.on('error', () => console.log('Lost PG connection'));
 pgClient.query('CREATE TABLE IF NOT EXISTS values (NUMBER INT)')
         .catch(err => console.log(err));
 
+//redis client setup
+const redis = require('redis');
+const redisClient = redis.createClient({
+    host: keys.redisHost,
+    port: keys.redisPort,
+    retry_strategy: () => 1000
+});
+
+const redisPublisher = redisClient.duplicate();
