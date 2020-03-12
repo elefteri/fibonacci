@@ -21,7 +21,7 @@ const pgClient = new pool({
 });
 
 pgClient.on('error', () => console.log('Lost PG connection'));
-pgClient.query('CREATE TABLE IF NOT EXISTS values (NUMBER INT)')
+pgClient.query('CREATE TABLE IF NOT EXISTS FIB_SEQUENCE (FIB_INDEX INT)')
         .catch(err => console.log(err));
 
 //redis client setup
@@ -39,3 +39,13 @@ app.get('/', (req, res) => {
     res.send('Hi There !');
 });
 
+app.get('/values/all', async (req, res) => {
+    const values = await pgClient.query('SELECT FIB_INDEX FROM FIB_SEQUENCE');
+    res.send(values.rows);
+});
+
+app.get('/values/current', async (req, res) => {
+    redisClient.hgetall('fib_values', (err, fib_sequence) => {
+        res.send(fib_sequence);
+    }); 
+});
