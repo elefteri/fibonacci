@@ -49,3 +49,21 @@ app.get('/values/current', async (req, res) => {
         res.send(fib_sequence);
     }); 
 });
+
+app.post('/values', async (req, res) => {
+    const index = req.body.index;
+    if (parseInt(index) > 40) {
+        return res.status(422).send('Index too high');
+    }
+
+    redisClient.hset('', index, 'Nothing yet');
+    redisPublisher.publish('insert', index);
+    // pgClient.query('INSERT INTO FIB_SEQUENCE(FIB_INDEX) VALUES($1)', [index]);
+    pgClient.query(`INSERT INTO FIB_SEQUENCE(FIB_INDEX) VALUES(${index})`);
+
+    res.send({ working: true });
+});
+
+app.listen(5000, err => {
+    console.log(err);
+});
