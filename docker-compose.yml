@@ -8,3 +8,11 @@ services:
     redis:
 #       image: 'redis:5.0.8-alpine3.11'   # this is the latest right now
         image: 'redis:5.0-alpine'
+    server:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./server
+        volumes:
+            - /app/node_modules
+#            local dir:image dir
+            - ./server:/app
