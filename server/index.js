@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //Postgress client setup
-const { pool } = require('pg');
-const pgClient = new pool({
+const { Pool } = require('pg');
+const pgClient = new Pool({
     user: keys.pgUser,
     host: keys.pgHost,
     database: keys.pgDatabase,
