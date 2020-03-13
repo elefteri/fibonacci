@@ -2,3 +2,5 @@ version: '3'
 services: 
     postgress:
         image: 'postgres:9.6-alpine'
+        environment:
+            - POSTGRES_PASSWORD=postgres_password
