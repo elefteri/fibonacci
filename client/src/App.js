@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Otherpage from './OtherPage';
+import OtherPage from './OtherPage';
 import Fib from './Fib';
 
 import logo from './logo.svg';
 import './App.css';
-import OtherPage from './OtherPage';
 
 
 
