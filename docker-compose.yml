@@ -1,6 +1,10 @@
 version: '3'
 services: 
     postgress:
+#       image: 'postgres:9.6.17-alpine'   # there is no specific alpine version
         image: 'postgres:9.6-alpine'
         environment:
             - POSTGRES_PASSWORD=postgres_password
+    redis:
+#       image: 'redis:5.0.8-alpine3.11'   # this is the latest right now
+        image: 'redis:5.0-alpine'
