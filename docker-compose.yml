@@ -8,7 +8,7 @@ services:
     redis:
 #       image: 'redis:5.0.8-alpine3.11'   # this is the latest right now
         image: 'redis:5.0-alpine'
-    server:
+    fib-server:
         build:
             dockerfile: Dockerfile.dev
             context: ./server
@@ -24,3 +24,18 @@ services:
             - PGDATABASE=postgres
             - PGPASSWORD=postgres_password
             - PGPORT=5432
+    fib-client:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./client
+        volumes:
+            - /app/node_modules
+            - ./client:/app
+    fib-worker:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./worker
+        volumes:
+            - /app/node_modules
+            - ./worker:/app
+
