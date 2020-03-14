@@ -8,6 +8,13 @@ services:
     redis:
 #       image: 'redis:5.0.8-alpine3.11'   # this is the latest right now
         image: 'redis:5.0-alpine'
+    nginx:
+        restart: always
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./nginx
+        ports:
+            - '3050:80'
     fib-server-api:
         build:
             dockerfile: Dockerfile.dev
