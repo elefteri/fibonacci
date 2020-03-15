@@ -22,7 +22,7 @@ script:
   - docker build -t dibitida/fib-nginx ./nginx
 #  #docker log in to CLI
   - echo "$DOCKS" | docker login -u "$DOCK" --password-stdin
-  - docker push fib-client
-  - docker push fib-server
-  - docker push fib-worker
-  - docker push fib-nginx
+  - docker push dibitida/fib-client
+  - docker push dibitida/fib-server
+  - docker push dibitida/fib-worker
+  - docker push dibitida/fib-nginx
