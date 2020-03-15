@@ -3,6 +3,6 @@ WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 #do not copy package and other files
-COPY ./public .
-COPY ./src .
+COPY ./public ./public
+COPY ./src ./src
 CMD ["npm", "run", "start"]
