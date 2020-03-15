@@ -8,7 +8,7 @@ before_install:
 #  - docker build -t dibitida/fib-server ./server
 #  - docker build -t dibitida/fib-worker ./worker
 
-script:
+#script:
 #  - docker run -e CI=true dibitida/fib-test npm test
 
 after_success:
