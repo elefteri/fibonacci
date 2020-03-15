@@ -5,13 +5,14 @@ services:
 before_install:
 #  - docker build -t dibitida/fib-test -f ./client/Dockerfile.dev ./client
    - docker build -t dibitida/fib-nginx -f ./nginx/Dockerfile.dev ./nginx
+   - docker build -t dibitida/fib-nginx ./nginx
 #  - docker build -t dibitida/fib-server ./server
 #  - docker build -t dibitida/fib-worker ./worker
 
 #script:
 #  - docker run -e CI=true dibitida/fib-test npm test
 
-after_success:
+#after_success:
 #  - docker build -t dibitida/fib-client ./client
    - docker build -t dibitida/fib-nginx ./nginx
 #  - docker build -t dibitida/fib-server ./server
