@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dibitida/fib-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true dibitida/fib-test npm test
+
+after_success:
+  - docker build -t dibitida/fib-client ./client
+  - docker build -t dibitida/fib-nginx ./nginx
+  - docker build -t dibitida/fib-srever ./server
+  - docker build -t dibitida/fib-worker ./worker
