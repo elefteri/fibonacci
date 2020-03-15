@@ -4,7 +4,35 @@
         {
             "name": "fib-aws-client",
             "image": "dibitida/fib-client",
-            "hostname": "fib-client"
+            "hostname": "fib-client",
+            "essential": false
+        },
+        {
+            "name": "fib-aws-server",
+            "image": "dibitida/fib-server",
+            "hostname": "fib-server-api",
+            "essential": false
+        },
+        {
+            "name": "fib-aws-worker",
+            "image": "dibitida/fib-worker",
+            "hostname": "fib-worker",
+            "essential": false
+        },
+        {
+            "name": "fib-aws-nginx",
+            "image": "dibitida/fib-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "fib-aws-client",
+                "fib-aws-server"
+            ]
         }
     ]
 }
