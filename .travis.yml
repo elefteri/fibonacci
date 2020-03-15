@@ -3,27 +3,26 @@ services:
   - docker
 
 before_install:
-#  - docker build -t dibitida/fib-test -f ./client/Dockerfile.dev ./client
+  - docker build -t dibitida/fib-test -f ./client/Dockerfile.dev ./client
 
 # - docker build -t dibitida/fib-nginx -f ./nginx/Dockerfile.dev ./nginx
 #  - docker build -t dibitida/fib-nginx ./nginx
-
 #  - docker build -t dibitida/fib-server -f ./server/Dockerfile.dev ./server
 #  - docker build -t dibitida/fib-server ./server
-  - docker build -t dibitida/fib-worker -f ./worker/Dockerfile.dev ./worker
-  - docker build -t dibitida/fib-worker ./worker
+#  - docker build -t dibitida/fib-worker -f ./worker/Dockerfile.dev ./worker
+#  - docker build -t dibitida/fib-worker ./worker
 
-#script:
-#  - docker run -e CI=true dibitida/fib-test npm test
+script:
+  - docker run -e CI=true dibitida/fib-test npm test
 
 #after_success:
-#  - docker build -t dibitida/fib-client ./client
-#  - docker build -t dibitida/fib-nginx ./nginx
-#  - docker build -t dibitida/fib-server ./server
-#  - docker build -t dibitida/fib-worker ./worker
+  - docker build -t dibitida/fib-client ./client
+  - docker build -t dibitida/fib-server ./server
+  - docker build -t dibitida/fib-worker ./worker
+  - docker build -t dibitida/fib-nginx ./nginx
 #  #docker log in to CLI
-#  - echo "$DOCKS" | docker login -u "$DOCK" --password-stdin
-#  - docker push fib-client
-#  - docker push fib-server
-#  - docker push fib-worker
-#  - docker push fib-nginx
+  - echo "$DOCKS" | docker login -u "$DOCK" --password-stdin
+  - docker push fib-client
+  - docker push fib-server
+  - docker push fib-worker
+  - docker push fib-nginx
