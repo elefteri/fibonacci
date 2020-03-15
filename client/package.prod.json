@@ -10,7 +10,6 @@
       "axios": "0.19.2"
     },
     "scripts": {
-      "start": "react-scripts start",
       "build": "react-scripts build"
     },
     "browserslist": {
