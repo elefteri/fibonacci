@@ -2,5 +2,7 @@ FROM node:13.0-alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
-COPY . .
+#do not copy package and other files
+COPY ./public .
+COPY ./src .
 CMD ["npm", "run", "start"]
