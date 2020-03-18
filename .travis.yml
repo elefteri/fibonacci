@@ -26,3 +26,15 @@ script:
   - docker push dibitida/fib-server
   - docker push dibitida/fib-worker
   - docker push dibitida/fib-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-ohio-1
+  app: fib-values
+  bucket_name: elasitcicbeanstalk-us-ohio0-1-jksdhkjhsdk
+  bucket_path: fib-values
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
