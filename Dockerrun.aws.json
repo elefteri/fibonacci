@@ -5,19 +5,22 @@
             "name": "fib-aws-client",
             "image": "dibitida/fib-client",
             "hostname": "fib-client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "fib-aws-server",
             "image": "dibitida/fib-server",
             "hostname": "fib-server-api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "fib-aws-worker",
             "image": "dibitida/fib-worker",
             "hostname": "fib-worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "fib-aws-nginx",
@@ -32,7 +35,8 @@
             "links": [
                 "fib-aws-client",
                 "fib-aws-server"
-            ]
+            ],
+            "memory": 128
         }
     ]
 }
